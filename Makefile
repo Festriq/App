@@ -29,7 +29,7 @@ ssh-web:
 	@docker compose exec -it web bash
 
 mysql:
-	@docker compose exec -it db mysql -uroot -ppassword patpat
+	@docker compose exec -it db mysql -uroot -ppassword festriq
 
 test:
 	@docker compose exec -it web php artisan test
@@ -39,15 +39,15 @@ refresh-db:
 	@docker compose exec -it web php artisan migrate:fresh
 	@docker compose exec -it web php artisan db:seed
 
+migrate:
+    @docker compose exec -it web php artisan migrate --seed
+
 refresh-testing-db:
 	@echo "Refreshing the DB..."
-	@docker compose exec -it db mysql -uroot -ppassword -e "DROP DATABASE IF EXISTS patpat_testing; CREATE DATABASE patpat_testing;"
+	@docker compose exec -it db mysql -uroot -ppassword -e "DROP DATABASE IF EXISTS festriq_testing; CREATE DATABASE festriq_testing;"
 	@docker compose exec -it db mysql -uroot -ppassword -e "GRANT ALL PRIVILEGES ON *.* TO 'sail'@'%' WITH GRANT OPTION;"
 	@docker compose exec -it web php artisan migrate --env=testing
 	@docker compose exec -it web php artisan db:seed --env=testing
 
 down:
 	docker compose down --volumes
-
-swagger:
-	@docker compose exec -it web php artisan l5-swagger:generate
