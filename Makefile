@@ -34,13 +34,14 @@ mysql:
 test:
 	@docker compose exec -it web php artisan test
 
+migrate-db:
+	@echo "Migrating the DB..."
+	@docker compose exec -it web php artisan migrate --seed
+
 refresh-db:
 	@echo "Refreshing the DB..."
 	@docker compose exec -it web php artisan migrate:fresh
 	@docker compose exec -it web php artisan db:seed
-
-migrate:
-    @docker compose exec -it web php artisan migrate --seed
 
 refresh-testing-db:
 	@echo "Refreshing the DB..."
