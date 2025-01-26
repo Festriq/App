@@ -12,15 +12,15 @@ Before setting up the application, ensure that you have the following installed 
 
 ## Repository
 
-Git URL: [https://github.com/Festriq/App.git](https://github.com/Festriq/App.git)
+Git URL: [https://github.com/Festriq/Festriq.git](https://github.com/Festriq/Festriq.git)
 
 ## Setup Instructions
 
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/Festriq/App.git
-cd App
+git clone https://github.com/Festriq/Festriq.git
+cd Festriq
 ```
 
 ### Create the `.env` File
