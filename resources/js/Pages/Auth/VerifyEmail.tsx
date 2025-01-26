@@ -1,4 +1,4 @@
-import { VerifyEmailForm } from '@/components/auth/verify-email-form';
+import { VerifyEmailForm } from '@/Components/auth/verify-email-form';
 import GuestLayout from '@/Layouts/GuestLayout';
 import { Head } from '@inertiajs/react';
 

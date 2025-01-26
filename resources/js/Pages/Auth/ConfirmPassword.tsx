@@ -1,4 +1,4 @@
-import { ConfirmPasswordForm } from '@/components/auth/confirm-password-form';
+import { ConfirmPasswordForm } from '@/Components/auth/confirm-password-form';
 import GuestLayout from '@/Layouts/GuestLayout';
 import { Head } from '@inertiajs/react';
 

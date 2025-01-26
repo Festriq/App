@@ -1,7 +1,7 @@
-import { AppHeader } from '@/components/app-header';
-import { AppSidebar } from '@/components/app-sidebar';
-import { ThemeProvider } from '@/components/theme-provider';
-import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
+import { AppHeader } from '@/Components/app-header';
+import { AppSidebar } from '@/Components/app-sidebar';
+import { ThemeProvider } from '@/Components/theme-provider';
+import { SidebarInset, SidebarProvider } from '@/Components/ui/sidebar';
 import { PropsWithChildren, ReactNode } from 'react';
 
 export default function Authenticated({
