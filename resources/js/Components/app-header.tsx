@@ -1,7 +1,14 @@
 import { ModeToggle } from '@/Components/mode-toggle';
+import {
+    Breadcrumb,
+    BreadcrumbItem,
+    BreadcrumbLink,
+    BreadcrumbList,
+    BreadcrumbPage,
+    BreadcrumbSeparator,
+} from '@/Components/ui/breadcrumb';
 import { Separator } from '@/Components/ui/separator';
 import { SidebarTrigger } from '@/Components/ui/sidebar';
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/Components/ui/breadcrumb';
 
 export const AppHeader = () => {
     return (

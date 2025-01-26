@@ -1,11 +1,8 @@
-import * as React from "react"
-import {
-    AudioWaveform,
-    SquareTerminal,
-} from "lucide-react"
+import { AudioWaveform, SquareTerminal } from 'lucide-react';
+import * as React from 'react';
 
-import { NavMain } from "@/Components/nav-main"
-import { NavUser } from "@/Components/nav-user"
+import { NavMain } from '@/Components/nav-main';
+import { NavUser } from '@/Components/nav-user';
 import {
     Sidebar,
     SidebarContent,
@@ -13,20 +10,20 @@ import {
     SidebarHeader,
     SidebarMenuButton,
     SidebarRail,
-} from "@/Components/ui/sidebar"
+} from '@/Components/ui/sidebar';
 
 // This is sample data.
 const data = {
     navMain: [
         {
-            title: "Playground",
-            url: "#",
+            title: 'Playground',
+            route: 'dashboard',
             icon: SquareTerminal,
             isActive: true,
             items: [
                 {
-                    title: "History",
-                    url: "#",
+                    title: 'History',
+                    route: 'dashboard',
                 },
             ],
         },
@@ -45,9 +42,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                         <AudioWaveform size={18} />
                     </div>
                     <div className="grid flex-1 text-left text-sm leading-tight">
-                        <span className="truncate font-semibold">
-                            Festriq
-                        </span>
+                        <span className="truncate font-semibold">Festriq</span>
                         Enterprise Plan
                     </div>
                 </SidebarMenuButton>

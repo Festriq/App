@@ -1,10 +1,10 @@
-import { ChevronRight, type LucideIcon } from "lucide-react"
+import { ChevronRight, type LucideIcon } from 'lucide-react';
 
 import {
     Collapsible,
     CollapsibleContent,
     CollapsibleTrigger,
-} from "@/Components/ui/collapsible"
+} from '@/Components/ui/collapsible';
 import {
     SidebarGroup,
     SidebarGroupLabel,
@@ -14,21 +14,22 @@ import {
     SidebarMenuSub,
     SidebarMenuSubButton,
     SidebarMenuSubItem,
-} from "@/Components/ui/sidebar"
+} from '@/Components/ui/sidebar';
+import { Link } from '@inertiajs/react';
 
 export function NavMain({
     items,
 }: {
     items: {
-        title: string
-        url: string
-        icon?: LucideIcon
-        isActive?: boolean
+        title: string;
+        route: string;
+        icon?: LucideIcon;
+        isActive?: boolean;
         items?: {
-            title: string
-            url: string
-        }[]
-    }[]
+            title: string;
+            route: string;
+        }[];
+    }[];
 }) {
     return (
         <SidebarGroup>
@@ -54,9 +55,11 @@ export function NavMain({
                                     {item.items?.map((subItem) => (
                                         <SidebarMenuSubItem key={subItem.title}>
                                             <SidebarMenuSubButton asChild>
-                                                <a href={subItem.url}>
+                                                <Link
+                                                    href={route(subItem.route)}
+                                                >
                                                     <span>{subItem.title}</span>
-                                                </a>
+                                                </Link>
                                             </SidebarMenuSubButton>
                                         </SidebarMenuSubItem>
                                     ))}

@@ -1,5 +1,5 @@
-import GuestLayout from '@/Layouts/GuestLayout';
 import { LoginForm } from '@/Components/auth/login-form';
+import GuestLayout from '@/Layouts/GuestLayout';
 import { Head } from '@inertiajs/react';
 
 export default function Login({
