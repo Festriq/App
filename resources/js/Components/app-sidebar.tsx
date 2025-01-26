@@ -1,4 +1,4 @@
-import { AudioWaveform, SquareTerminal } from 'lucide-react';
+import { AudioWaveform, Monitor, SquareTerminal } from 'lucide-react';
 import * as React from 'react';
 
 import { NavMain } from '@/Components/nav-main';
@@ -11,15 +11,23 @@ import {
     SidebarMenuButton,
     SidebarRail,
 } from '@/Components/ui/sidebar';
+import { NavDashboard } from './nav-dashboard';
 
 // This is sample data.
 const data = {
+    dashboard: [
+        {
+            title: 'Dashboard',
+            route: 'dashboard',
+            icon: Monitor,
+        },
+    ],
     navMain: [
         {
             title: 'Playground',
             route: 'dashboard',
             icon: SquareTerminal,
-            isActive: true,
+            isActive: false,
             items: [
                 {
                     title: 'History',
@@ -48,6 +56,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 </SidebarMenuButton>
             </SidebarHeader>
             <SidebarContent>
+                <NavDashboard dashboard={data.dashboard} />
                 <NavMain items={data.navMain} />
             </SidebarContent>
             <SidebarFooter>
