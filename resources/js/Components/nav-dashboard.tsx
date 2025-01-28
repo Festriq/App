@@ -19,7 +19,7 @@ export function NavDashboard({
     }[];
 }) {
     return (
-        <SidebarGroup className="group-data-[collapsible=icon]:hidden">
+        <SidebarGroup>
             <SidebarGroupLabel>Monitoring</SidebarGroupLabel>
             <SidebarMenu>
                 {dashboard.map((item) => (
