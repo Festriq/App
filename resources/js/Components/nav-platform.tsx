@@ -9,10 +9,10 @@ import {
 } from '@/Components/ui/sidebar';
 import { Link } from '@inertiajs/react';
 
-export function NavDashboard({
-    dashboard,
+export function NavPlatform({
+    items,
 }: {
-    dashboard: {
+    items: {
         title: string;
         route: string;
         icon: LucideIcon;
@@ -20,9 +20,9 @@ export function NavDashboard({
 }) {
     return (
         <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-            <SidebarGroupLabel>Monitoring</SidebarGroupLabel>
+            <SidebarGroupLabel>Platform</SidebarGroupLabel>
             <SidebarMenu>
-                {dashboard.map((item) => (
+                {items.map((item) => (
                     <SidebarMenuItem key={item.title}>
                         <SidebarMenuButton asChild>
                             <Link href={route(item.route)}>

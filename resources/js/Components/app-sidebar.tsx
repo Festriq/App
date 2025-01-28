@@ -1,7 +1,17 @@
-import { AudioWaveform, Monitor, SquareTerminal } from 'lucide-react';
+import {
+    AudioWaveform,
+    CalendarRangeIcon,
+    CalendarSearchIcon,
+    ChartColumnIcon,
+    MegaphoneIcon,
+    MessageCircleHeartIcon,
+    Monitor,
+    TentIcon,
+    TicketIcon,
+    UsersIcon,
+} from 'lucide-react';
 import * as React from 'react';
 
-import { NavMain } from '@/Components/nav-main';
 import { NavUser } from '@/Components/nav-user';
 import {
     Sidebar,
@@ -11,7 +21,9 @@ import {
     SidebarMenuButton,
     SidebarRail,
 } from '@/Components/ui/sidebar';
+import { NavConfigurations } from './nav-configurations';
 import { NavDashboard } from './nav-dashboard';
+import { NavPlatform } from './nav-platform';
 
 // This is sample data.
 const data = {
@@ -21,19 +33,65 @@ const data = {
             route: 'dashboard',
             icon: Monitor,
         },
-    ],
-    navMain: [
         {
-            title: 'Playground',
+            title: 'Event Calendar',
             route: 'dashboard',
-            icon: SquareTerminal,
-            isActive: false,
+            icon: CalendarSearchIcon,
+        },
+    ],
+    platform: [
+        {
+            title: 'Events',
+            route: 'events.index',
+            icon: CalendarRangeIcon,
+        },
+        {
+            title: 'Tickets',
+            route: 'events.index',
+            icon: TicketIcon,
+        },
+        {
+            title: 'Campaigns',
+            route: 'events.index',
+            icon: TentIcon,
+        },
+        {
+            title: 'Announcements',
+            route: 'events.index',
+            icon: MegaphoneIcon,
+        },
+        {
+            title: 'Feedbacks',
+            route: 'events.index',
+            icon: MessageCircleHeartIcon,
+        },
+    ],
+    reports: [
+        {
+            title: 'Reports',
+            route: 'events.index',
+            icon: ChartColumnIcon,
+            dropdown: true,
             items: [
                 {
-                    title: 'History',
-                    route: 'dashboard',
+                    title: 'Event Reports',
+                    route: 'events.index',
+                },
+                {
+                    title: 'Ticket Reports',
+                    route: 'events.index',
+                },
+                {
+                    title: 'Campaign Reports',
+                    route: 'events.index',
                 },
             ],
+        },
+        {
+            title: 'Users ',
+            route: 'events.index',
+            icon: UsersIcon,
+            dropdown: false,
         },
     ],
 };
@@ -57,7 +115,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             </SidebarHeader>
             <SidebarContent>
                 <NavDashboard dashboard={data.dashboard} />
-                <NavMain items={data.navMain} />
+                <NavPlatform items={data.platform} />
+                <NavConfigurations items={data.reports} />
             </SidebarContent>
             <SidebarFooter>
                 <NavUser />
