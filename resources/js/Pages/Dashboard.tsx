@@ -1,16 +1,11 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
 
 export default function Dashboard() {
+    const pageTitle = 'Dashboard';
+    const breadcrumb = [{ title: 'Dashboard', route: 'dashboard' }];
+
     return (
-        <AuthenticatedLayout
-            header={
-                <h2 className="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-                    Dashboard
-                </h2>
-            }
-        >
-            <Head title="Dashboard" />
+        <AuthenticatedLayout title={pageTitle} breadcrumb={breadcrumb}>
             <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
                 <div className="grid auto-rows-min gap-4 md:grid-cols-3">
                     <div className="aspect-video rounded-xl bg-muted/50" />
