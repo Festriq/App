@@ -1,7 +1,7 @@
 import { Link, useForm } from '@inertiajs/react';
 
-import Checkbox from '@/components/Checkbox';
-import InputError from '@/components/InputError';
+import Checkbox from '@/components/checkbox';
+import InputError from '@/components/input-error';
 import { Button } from '@/components/ui/button';
 import {
     Card,

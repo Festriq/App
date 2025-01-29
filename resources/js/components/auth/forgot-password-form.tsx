@@ -1,6 +1,6 @@
 import { Link, useForm } from '@inertiajs/react';
 
-import InputError from '@/components/InputError';
+import InputError from '@/components/input-error';
 import { Button } from '@/components/ui/button';
 import {
     Card,
