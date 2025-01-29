@@ -24,7 +24,10 @@ export function NavDashboard({
             <SidebarMenu>
                 {dashboard.map((item) => (
                     <SidebarMenuItem key={item.title}>
-                        <SidebarMenuButton asChild>
+                        <SidebarMenuButton
+                            asChild
+                            isActive={item.route === route().current()}
+                        >
                             <Link href={route(item.route)}>
                                 <item.icon />
                                 <span>{item.title}</span>

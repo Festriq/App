@@ -35,7 +35,7 @@ const data = {
         },
         {
             title: 'Event Calendar',
-            route: 'dashboard',
+            route: 'events.index',
             icon: CalendarSearchIcon,
         },
     ],
