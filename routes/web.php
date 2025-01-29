@@ -10,11 +10,11 @@ Route::get('/health', function () {
 });
 
 Route::get('/', function () {
-    return Inertia::render('Dashboard');
+    return Inertia::render('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/events', function () {
-    return Inertia::render('Events/Index');
+    return Inertia::render('events/page');
 })->middleware(['auth', 'verified'])->name('events.index');
 
 Route::middleware('auth')->group(function () {
