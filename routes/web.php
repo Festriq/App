@@ -17,4 +17,8 @@ Route::get('/events', function () {
     return Inertia::render('events/page');
 })->middleware(['auth', 'verified'])->name('events.index');
 
+Route::get('/calendar', function () {
+    return Inertia::render('calendar/page');
+})->middleware(['auth', 'verified'])->name('calendar.index');
+
 require __DIR__.'/auth.php';

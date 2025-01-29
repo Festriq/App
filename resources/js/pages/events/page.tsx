@@ -42,10 +42,7 @@ const events: Event[] = [
 
 export default function EventsPage() {
     const pageTitle = 'Events Dashboard';
-    const breadcrumb = [
-        { title: 'Dashboard', route: 'dashboard' },
-        { title: 'Events', route: 'events.index' },
-    ];
+    const breadcrumb = [{ title: 'Events', route: 'events.index' }];
 
     return (
         <AuthenticatedLayout title={pageTitle} breadcrumb={breadcrumb}>

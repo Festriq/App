@@ -1,0 +1,101 @@
+/* Custom styles for react-big-calendar */
+.shadcn-calendar .rbc-calendar {
+  @apply font-sans;
+}
+
+.shadcn-calendar .rbc-toolbar {
+  @apply mb-4;
+}
+
+.shadcn-calendar .rbc-toolbar button {
+  @apply rounded-md bg-secondary px-3 py-1 text-sm font-medium text-secondary-foreground transition-colors hover:bg-secondary/80;
+}
+
+.shadcn-calendar .rbc-toolbar button.rbc-active {
+  @apply bg-primary text-primary-foreground;
+}
+
+.shadcn-calendar .rbc-header {
+  @apply bg-muted py-2 font-semibold text-muted-foreground;
+}
+
+.shadcn-calendar .rbc-today {
+  @apply bg-accent;
+}
+
+.shadcn-calendar .rbc-event {
+  @apply rounded-md bg-primary text-primary-foreground;
+}
+
+.shadcn-calendar .rbc-month-view,
+.shadcn-calendar .rbc-time-view,
+.shadcn-calendar .rbc-agenda-view {
+  @apply overflow-hidden rounded-md border-border;
+}
+
+.shadcn-calendar .rbc-off-range-bg {
+  @apply bg-muted/50;
+}
+
+.shadcn-calendar .rbc-day-bg + .rbc-day-bg,
+.shadcn-calendar .rbc-month-row + .rbc-month-row,
+.shadcn-calendar .rbc-header + .rbc-header,
+.shadcn-calendar .rbc-time-header-cell + .rbc-time-header-cell {
+  @apply border-border;
+}
+
+.shadcn-calendar .rbc-timeslot-group {
+  @apply border-border;
+}
+
+.shadcn-calendar .rbc-time-content {
+  @apply border-border;
+}
+
+.shadcn-calendar .rbc-time-header-content {
+  @apply border-border;
+}
+
+.shadcn-calendar .rbc-agenda-view table.rbc-agenda-table {
+  @apply border-border;
+}
+
+.shadcn-calendar .rbc-agenda-view table.rbc-agenda-table tbody > tr > td + td {
+  @apply border-border;
+}
+
+.shadcn-calendar .rbc-agenda-view table.rbc-agenda-table thead > tr > th {
+  @apply border-border;
+}
+
+/* Ensure consistent border color in dark mode */
+.dark .shadcn-calendar .rbc-month-view,
+.dark .shadcn-calendar .rbc-time-view,
+.dark .shadcn-calendar .rbc-agenda-view,
+.dark .shadcn-calendar .rbc-time-content,
+.dark .shadcn-calendar .rbc-day-bg + .rbc-day-bg,
+.dark .shadcn-calendar .rbc-month-row + .rbc-month-row,
+.dark .shadcn-calendar .rbc-header + .rbc-header,
+.dark .shadcn-calendar .rbc-time-header-cell + .rbc-time-header-cell,
+.dark .shadcn-calendar .rbc-timeslot-group,
+.dark .shadcn-calendar .rbc-agenda-view table.rbc-agenda-table,
+.dark
+  .shadcn-calendar
+  .rbc-agenda-view
+  table.rbc-agenda-table
+  tbody
+  > tr
+  > td
+  + td,
+.dark .shadcn-calendar .rbc-agenda-view table.rbc-agenda-table thead > tr > th {
+  @apply border-muted;
+}
+
+/* Specific styles for calendar header */
+.shadcn-calendar .rbc-header {
+  @apply border-b border-border bg-secondary py-2 font-semibold text-secondary-foreground;
+}
+
+.dark .shadcn-calendar .rbc-header {
+  @apply border-muted bg-muted text-muted-foreground;
+}

@@ -27,8 +27,7 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.5rem
-  ;
+    --radius: 0.5rem;
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -36,7 +35,8 @@
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%}
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -61,8 +61,7 @@
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%
-  ;
+    --chart-5: 340 75% 55%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -70,7 +69,8 @@
     --sidebar-accent: 240 3.7% 15.9%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%}
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
 }
 @layer base {
   * {
@@ -79,4 +79,72 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Custom styles for react-big-calendar */
+.shadcn-calendar .rbc-calendar {
+  @apply font-sans;
+}
+
+.shadcn-calendar .rbc-toolbar {
+  @apply mb-4;
+}
+
+.shadcn-calendar .rbc-toolbar button {
+  @apply rounded-md bg-secondary px-3 py-1 text-sm font-medium text-secondary-foreground transition-colors hover:bg-secondary/80;
+}
+
+.shadcn-calendar .rbc-toolbar button.rbc-active {
+  @apply bg-primary text-primary-foreground;
+}
+
+.shadcn-calendar .rbc-header {
+  @apply bg-muted py-2 font-semibold text-muted-foreground;
+}
+
+.shadcn-calendar .rbc-today {
+  @apply bg-accent;
+}
+
+.shadcn-calendar .rbc-event {
+  @apply rounded-md bg-primary text-primary-foreground;
+}
+
+.shadcn-calendar .rbc-month-view,
+.shadcn-calendar .rbc-time-view,
+.shadcn-calendar .rbc-agenda-view {
+  @apply overflow-hidden rounded-md border-border;
+}
+
+.shadcn-calendar .rbc-off-range-bg {
+  @apply bg-muted/50;
+}
+
+.shadcn-calendar .rbc-day-bg + .rbc-day-bg,
+.shadcn-calendar .rbc-month-row + .rbc-month-row {
+  @apply border-border;
+}
+
+.shadcn-calendar .rbc-timeslot-group {
+  @apply border-border;
+}
+
+.shadcn-calendar .rbc-time-content {
+  @apply border-border;
+}
+
+.shadcn-calendar .rbc-time-header-content {
+  @apply border-border;
+}
+
+.shadcn-calendar .rbc-agenda-view table.rbc-agenda-table {
+  @apply border-border;
+}
+
+.shadcn-calendar .rbc-agenda-view table.rbc-agenda-table tbody > tr > td + td {
+  @apply border-border;
+}
+
+.shadcn-calendar .rbc-agenda-view table.rbc-agenda-table thead > tr > th {
+  @apply border-border;
 }
