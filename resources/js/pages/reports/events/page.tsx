@@ -2,7 +2,10 @@ import AuthenticatedLayout from '@/layouts/AuthenticatedLayout';
 
 export default function EventsReportPage() {
     const pageTitle = 'Events Report';
-    const breadcrumb = [{ title: 'Events Report', route: 'events.index' }];
+    const breadcrumb = [
+        { title: 'Reports', route: 'reports.index' },
+        { title: 'Events Report', route: 'events.index' },
+    ];
 
     return (
         <AuthenticatedLayout title={pageTitle} breadcrumb={breadcrumb}>

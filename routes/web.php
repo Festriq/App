@@ -10,7 +10,7 @@ Route::get('/health', function () {
 });
 
 Route::get('/', function () {
-    return Inertia::render('dashboard');
+    return Inertia::render('dashboard/page');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/events', function () {
