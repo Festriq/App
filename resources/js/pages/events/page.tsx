@@ -1,6 +1,6 @@
 import AuthenticatedLayout from '@/layouts/AuthenticatedLayout';
-import { columns, type Event } from '@/pages/events/columns';
-import { DataTable } from '@/pages/events/data-table';
+import { columns, type Event } from '@/pages/events/components/columns';
+import { DataTable } from '@/pages/events/components/data-table';
 
 const events: Event[] = [
     {
@@ -41,7 +41,7 @@ const events: Event[] = [
 ];
 
 export default function EventsPage() {
-    const pageTitle = 'Events Dashboard';
+    const pageTitle = 'Events';
     const breadcrumb = [{ title: 'Events', route: 'events.index' }];
 
     return (

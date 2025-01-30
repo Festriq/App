@@ -22,7 +22,7 @@ import {
     SidebarRail,
 } from '@/components/ui/sidebar';
 import { NavConfigurations } from './nav-configurations';
-import { NavDashboard } from './nav-dashboard';
+import { NavDashboard } from './nav-monitoring';
 import { NavPlatform } from './nav-platform';
 
 // This is sample data.
@@ -34,7 +34,7 @@ const data = {
             icon: Monitor,
         },
         {
-            title: 'Event Calendar',
+            title: 'Calendar',
             route: 'calendar.index',
             icon: CalendarSearchIcon,
         },
@@ -47,49 +47,49 @@ const data = {
         },
         {
             title: 'Tickets',
-            route: 'events.index',
+            route: 'tickets.index',
             icon: TicketIcon,
         },
         {
             title: 'Campaigns',
-            route: 'events.index',
+            route: 'campaigns.index',
             icon: TentIcon,
         },
         {
             title: 'Announcements',
-            route: 'events.index',
+            route: 'announcements.index',
             icon: MegaphoneIcon,
         },
         {
             title: 'Feedbacks',
-            route: 'events.index',
+            route: 'feedbacks.index',
             icon: MessageCircleHeartIcon,
         },
     ],
     reports: [
         {
             title: 'Reports',
-            route: 'events.index',
             icon: ChartColumnIcon,
+            route: 'reports.index', // Add a route for the parent item
             dropdown: true,
             items: [
                 {
-                    title: 'Event Reports',
-                    route: 'events.index',
+                    title: 'Events',
+                    route: 'reports.events',
                 },
                 {
-                    title: 'Ticket Reports',
-                    route: 'events.index',
+                    title: 'Tickets',
+                    route: 'reports.tickets',
                 },
                 {
-                    title: 'Campaign Reports',
-                    route: 'events.index',
+                    title: 'Campaigns',
+                    route: 'reports.campaigns',
                 },
             ],
         },
         {
-            title: 'Users ',
-            route: 'events.index',
+            title: 'Users',
+            route: 'users.index',
             icon: UsersIcon,
             dropdown: false,
         },

@@ -1,6 +1,6 @@
 import { Link, useForm } from '@inertiajs/react';
+import type { FormEventHandler } from 'react';
 
-import Checkbox from '@/components/checkbox';
 import InputError from '@/components/input-error';
 import { Button } from '@/components/ui/button';
 import {
@@ -10,21 +10,15 @@ import {
     CardHeader,
     CardTitle,
 } from '@/components/ui/card';
+import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { FormEventHandler } from 'react';
 
-export function LoginForm({
-    status,
-    // canResetPassword,
-}: {
-    status?: string;
-    // canResetPassword: boolean;
-}) {
+export function LoginForm({ status }: { status?: string }) {
     const { data, setData, post, processing, errors, reset } = useForm({
         email: '',
         password: '',
-        remember: false,
+        remember: false as boolean,
     });
 
     const submit: FormEventHandler = (e) => {
@@ -70,17 +64,7 @@ export function LoginForm({
                             />
                         </div>
                         <div className="grid gap-2">
-                            {/* <div className="flex items-center">
-                                <Label htmlFor="password">Password</Label>
-                                {canResetPassword && (
-                                    <Link
-                                        href={route('password.request')}
-                                        className="ml-auto inline-block text-sm underline"
-                                    >
-                                        Forgot your password?
-                                    </Link>
-                                )}
-                            </div> */}
+                            <Label htmlFor="password">Password</Label>
                             <Input
                                 id="password"
                                 type="password"
@@ -97,20 +81,22 @@ export function LoginForm({
                                 className="mt-2"
                             />
                         </div>
-                        <div className="grid gap-2">
-                            <div className="flex items-center space-x-2">
-                                <Checkbox
-                                    id="remember"
-                                    name="remember"
-                                    checked={data.remember}
-                                />
-                                <label
-                                    htmlFor="remember"
-                                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                                >
-                                    Remember me
-                                </label>
-                            </div>
+                        <div className="flex items-center space-x-2">
+                            <Checkbox
+                                id="remember"
+                                checked={data.remember}
+                                onCheckedChange={(checked) => {
+                                    if (checked !== 'indeterminate') {
+                                        setData('remember', checked);
+                                    }
+                                }}
+                            />
+                            <Label
+                                htmlFor="remember"
+                                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                            >
+                                Remember me
+                            </Label>
                         </div>
                         <Button
                             type="submit"
@@ -119,13 +105,6 @@ export function LoginForm({
                         >
                             Login
                         </Button>
-                        {/* <Button
-                            variant="outline"
-                            className="w-full"
-                            disabled={processing}
-                        >
-                            Login with Google
-                        </Button> */}
                     </div>
                     <div className="mt-4 text-center text-sm">
                         Don&apos;t have an account?{' '}

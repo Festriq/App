@@ -22,7 +22,7 @@ import {
     SidebarMenuItem,
     useSidebar,
 } from '@/components/ui/sidebar';
-import { usePage } from '@inertiajs/react';
+import { router, usePage } from '@inertiajs/react';
 
 export function NavUser() {
     const { isMobile } = useSidebar();
@@ -31,6 +31,14 @@ export function NavUser() {
     const name = user.name.split(' ');
     const initials =
         name[0].charAt(0).toUpperCase() + name[1].charAt(0).toUpperCase();
+
+    const handleLogout = () => {
+        router.post(route('logout'));
+    };
+
+    const handleAccount = () => {
+        router.get(route('account.index'));
+    };
 
     return (
         <SidebarMenu>
@@ -97,7 +105,7 @@ export function NavUser() {
                         </DropdownMenuGroup>
                         <DropdownMenuSeparator /> */}
                         <DropdownMenuGroup>
-                            <DropdownMenuItem>
+                            <DropdownMenuItem onSelect={handleAccount}>
                                 <BadgeCheck />
                                 Account
                             </DropdownMenuItem>
@@ -111,7 +119,7 @@ export function NavUser() {
                             </DropdownMenuItem>
                         </DropdownMenuGroup>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem>
+                        <DropdownMenuItem onSelect={handleLogout}>
                             <LogOut />
                             Log out
                         </DropdownMenuItem>

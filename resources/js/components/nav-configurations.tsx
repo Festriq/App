@@ -13,17 +13,17 @@ import {
     SidebarMenuSubButton,
     SidebarMenuSubItem,
 } from '@/components/ui/sidebar';
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import { ChevronRight, type LucideIcon } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 export function NavConfigurations({
     items,
 }: {
     items: {
         title: string;
-        route: string;
         icon?: LucideIcon;
-        isActive?: boolean;
+        route: string;
         dropdown: boolean;
         items?: {
             title: string;
@@ -31,6 +31,29 @@ export function NavConfigurations({
         }[];
     }[];
 }) {
+    const [openCollapsibles, setOpenCollapsibles] = useState<{
+        [key: string]: boolean;
+    }>({});
+    const { url } = usePage();
+
+    useEffect(() => {
+        const updatedOpenCollapsibles = items.reduce(
+            (acc, item) => {
+                if (item.dropdown) {
+                    acc[item.title] =
+                        url.startsWith('/reports') ||
+                        (item.items?.some((subItem) =>
+                            route().current(subItem.route),
+                        ) ??
+                            false);
+                }
+                return acc;
+            },
+            {} as { [key: string]: boolean },
+        );
+        setOpenCollapsibles(updatedOpenCollapsibles);
+    }, [items, url]);
+
     return (
         <SidebarGroup>
             <SidebarGroupLabel>Configurations</SidebarGroupLabel>
@@ -41,7 +64,13 @@ export function NavConfigurations({
                             <Collapsible
                                 key={item.title}
                                 asChild
-                                defaultOpen={item.isActive}
+                                open={openCollapsibles[item.title]}
+                                onOpenChange={(isOpen) =>
+                                    setOpenCollapsibles((prev) => ({
+                                        ...prev,
+                                        [item.title]: isOpen,
+                                    }))
+                                }
                                 className="group/collapsible"
                             >
                                 <SidebarMenuItem>
@@ -60,6 +89,9 @@ export function NavConfigurations({
                                                 >
                                                     <SidebarMenuSubButton
                                                         asChild
+                                                        isActive={route().current(
+                                                            subItem.route,
+                                                        )}
                                                     >
                                                         <Link
                                                             href={route(
@@ -82,7 +114,10 @@ export function NavConfigurations({
 
                     return (
                         <SidebarMenuItem key={item.title}>
-                            <SidebarMenuButton asChild>
+                            <SidebarMenuButton
+                                asChild
+                                isActive={route().current(item.route)}
+                            >
                                 <Link href={route(item.route)}>
                                     {item.icon && <item.icon />}
                                     <span>{item.title}</span>
