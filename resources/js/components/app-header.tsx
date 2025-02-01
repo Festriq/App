@@ -27,8 +27,8 @@ export const AppHeader = ({ breadcrumb }: breadcrumbProps) => {
                                 href={route(item.route)}
                                 className={cn(
                                     index === breadcrumb.length - 1
-                                        ? 'font-bold text-primary' // Active styles
-                                        : 'text-muted', // Default styles
+                                        ? 'font-bold text-primary'
+                                        : 'text-muted-foreground',
                                 )}
                             >
                                 {item.title}

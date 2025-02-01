@@ -1,7 +1,13 @@
-'use client';
-
 import { Calendar, Mail, MessageSquare, Ticket } from 'lucide-react';
-import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from 'recharts';
+import {
+    Area,
+    AreaChart,
+    Bar,
+    BarChart,
+    ResponsiveContainer,
+    XAxis,
+    YAxis,
+} from 'recharts';
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
@@ -39,6 +45,81 @@ const campaignsData = [
     { month: 'Oct', campaigns: 35 },
     { month: 'Nov', campaigns: 40 },
     { month: 'Dec', campaigns: 45 },
+];
+
+const userRegistrationData = [
+    {
+        month: 'Jan',
+        externalRegistered: 100,
+        registeredAndOpened: 80,
+        notRegistered: 20,
+    },
+    {
+        month: 'Feb',
+        externalRegistered: 120,
+        registeredAndOpened: 95,
+        notRegistered: 25,
+    },
+    {
+        month: 'Mar',
+        externalRegistered: 140,
+        registeredAndOpened: 110,
+        notRegistered: 30,
+    },
+    {
+        month: 'Apr',
+        externalRegistered: 160,
+        registeredAndOpened: 130,
+        notRegistered: 30,
+    },
+    {
+        month: 'May',
+        externalRegistered: 180,
+        registeredAndOpened: 150,
+        notRegistered: 30,
+    },
+    {
+        month: 'Jun',
+        externalRegistered: 200,
+        registeredAndOpened: 170,
+        notRegistered: 30,
+    },
+    {
+        month: 'Jul',
+        externalRegistered: 220,
+        registeredAndOpened: 190,
+        notRegistered: 30,
+    },
+    {
+        month: 'Aug',
+        externalRegistered: 240,
+        registeredAndOpened: 210,
+        notRegistered: 30,
+    },
+    {
+        month: 'Sep',
+        externalRegistered: 260,
+        registeredAndOpened: 230,
+        notRegistered: 30,
+    },
+    {
+        month: 'Oct',
+        externalRegistered: 280,
+        registeredAndOpened: 250,
+        notRegistered: 30,
+    },
+    {
+        month: 'Nov',
+        externalRegistered: 300,
+        registeredAndOpened: 270,
+        notRegistered: 30,
+    },
+    {
+        month: 'Dec',
+        externalRegistered: 320,
+        registeredAndOpened: 290,
+        notRegistered: 30,
+    },
 ];
 
 export default function DashboardPage() {
@@ -99,7 +180,7 @@ export default function DashboardPage() {
                         <CardHeader>
                             <CardTitle>Events Overview</CardTitle>
                         </CardHeader>
-                        <CardContent>
+                        <CardContent className="p-0">
                             <ChartContainer
                                 config={{
                                     events: {
@@ -107,7 +188,7 @@ export default function DashboardPage() {
                                         color: 'hsl(var(--primary))',
                                     },
                                 }}
-                                className="h-[100%]"
+                                className="aspect-[5/2] p-6"
                             >
                                 <ResponsiveContainer width="100%" height="100%">
                                     <BarChart data={eventsData}>
@@ -130,7 +211,7 @@ export default function DashboardPage() {
                         <CardHeader>
                             <CardTitle>Campaigns Overview</CardTitle>
                         </CardHeader>
-                        <CardContent>
+                        <CardContent className="p-0">
                             <ChartContainer
                                 config={{
                                     campaigns: {
@@ -138,7 +219,7 @@ export default function DashboardPage() {
                                         color: 'hsl(var(--secondary))',
                                     },
                                 }}
-                                className="h-[100%]"
+                                className="aspect-[5/2] p-6"
                             >
                                 <ResponsiveContainer width="100%" height="100%">
                                     <BarChart data={campaignsData}>
@@ -158,6 +239,61 @@ export default function DashboardPage() {
                         </CardContent>
                     </Card>
                 </div>
+                <Card>
+                    <CardHeader>
+                        <CardTitle>User Registration Overview</CardTitle>
+                    </CardHeader>
+                    <CardContent className="p-0">
+                        <ChartContainer
+                            config={{
+                                externalRegistered: {
+                                    label: 'Externally Registered',
+                                    color: 'hsl(var(--primary))',
+                                },
+                                registeredAndOpened: {
+                                    label: 'Registered and Opened',
+                                    color: 'hsl(var(--secondary))',
+                                },
+                                notRegistered: {
+                                    label: 'Not Registered',
+                                    color: 'hsl(var(--muted))',
+                                },
+                            }}
+                            className="aspect-[5/1] p-6"
+                        >
+                            <ResponsiveContainer width="100%" height="100%">
+                                <AreaChart data={userRegistrationData}>
+                                    <XAxis dataKey="month" />
+                                    <YAxis />
+                                    <Area
+                                        type="monotone"
+                                        dataKey="externalRegistered"
+                                        stackId="1"
+                                        stroke="var(--color-externalRegistered)"
+                                        fill="var(--color-externalRegistered)"
+                                    />
+                                    <Area
+                                        type="monotone"
+                                        dataKey="registeredAndOpened"
+                                        stackId="1"
+                                        stroke="var(--color-registeredAndOpened)"
+                                        fill="var(--color-registeredAndOpened)"
+                                    />
+                                    <Area
+                                        type="monotone"
+                                        dataKey="notRegistered"
+                                        stackId="1"
+                                        stroke="var(--color-notRegistered)"
+                                        fill="var(--color-notRegistered)"
+                                    />
+                                    <ChartTooltip
+                                        content={<ChartTooltipContent />}
+                                    />
+                                </AreaChart>
+                            </ResponsiveContainer>
+                        </ChartContainer>
+                    </CardContent>
+                </Card>
             </div>
         </AuthenticatedLayout>
     );
