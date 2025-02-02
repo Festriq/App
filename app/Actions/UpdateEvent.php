@@ -3,6 +3,7 @@
 namespace App\Actions;
 
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 final readonly class UpdateEvent
 {
@@ -11,6 +12,8 @@ final readonly class UpdateEvent
      */
     public function handle(User $user, array $event): void
     {
-        $user->events()->update($event);
+        DB::transaction(function () use ($user, $event): void {
+            $user->events()->update($event);
+        });
     }
 }

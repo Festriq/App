@@ -1,53 +1,55 @@
+import { Button } from '@/components/ui/button';
+import { DataTable } from '@/components/ui/data-table';
 import AuthenticatedLayout from '@/layouts/AuthenticatedLayout';
-import { columns, type Event } from '@/pages/events/components/columns';
-import { DataTable } from '@/pages/events/components/data-table';
+import { Link } from '@inertiajs/react';
+import type { ColumnDef } from '@tanstack/react-table';
 
+// Define your data type
+type Event = {
+    id: string;
+    title: string;
+    date: string;
+    // ... other fields
+};
+
+// Define your columns
+const columns: ColumnDef<Event>[] = [
+    {
+        accessorKey: 'title',
+        header: 'Title',
+    },
+    {
+        accessorKey: 'date',
+        header: 'Date',
+    },
+    // ... other columns
+];
+
+// Your data
 const events: Event[] = [
-    {
-        id: '1',
-        title: 'Company Picnic',
-        description: 'Annual company gathering',
-        date: '2023-07-15',
-        status: 'upcoming',
-    },
-    {
-        id: '2',
-        title: 'Product Launch',
-        description: 'Launching our new product line',
-        date: '2023-08-01',
-        status: 'upcoming',
-    },
-    {
-        id: '3',
-        title: 'Team Building Workshop',
-        description: 'Improving team collaboration',
-        date: '2023-06-30',
-        status: 'completed',
-    },
-    {
-        id: '4',
-        title: 'Client Meeting',
-        description: 'Discussing project progress',
-        date: '2023-07-05',
-        status: 'ongoing',
-    },
-    {
-        id: '5',
-        title: 'Quarterly Review',
-        description: 'Reviewing Q2 performance',
-        date: '2023-07-20',
-        status: 'upcoming',
-    },
+    { id: '1', title: 'Event 1', date: '2023-06-01' },
+    { id: '2', title: 'Event 2', date: '2023-06-15' },
+    // ... more events
 ];
 
 export default function EventsPage() {
     const pageTitle = 'Events';
     const breadcrumb = [{ title: 'Events', route: 'events.index' }];
-
     return (
         <AuthenticatedLayout title={pageTitle} breadcrumb={breadcrumb}>
             <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-                <DataTable columns={columns} data={events} />
+                <div className="flex items-center justify-between">
+                    <h1 className="text-2xl font-semibold">Events</h1>
+                    <Link href={route('events.create')}>
+                        <Button>Create Event</Button>
+                    </Link>
+                </div>
+                <DataTable
+                    columns={columns}
+                    data={events}
+                    filterColumn="title"
+                    filterPlaceholder="Filter events..."
+                />
             </div>
         </AuthenticatedLayout>
     );

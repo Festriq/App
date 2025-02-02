@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -14,6 +15,9 @@ Route::get('/', function () {
 Route::get('/events', function () {
     return Inertia::render('events/page');
 })->middleware(['auth', 'verified'])->name('events.index');
+
+//create a resource route for events
+Route::resource('events', EventController::class);
 
 Route::get('/calendar', function () {
     return Inertia::render('calendar/page');
